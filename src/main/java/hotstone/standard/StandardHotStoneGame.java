@@ -18,6 +18,9 @@ package hotstone.standard;
 
 import hotstone.framework.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /** This is the 'temporary test stub' in TDD
  * terms: the initial empty but compilable implementation
  * of the game interface.
@@ -43,7 +46,8 @@ import hotstone.framework.*;
 public class StandardHotStoneGame implements Game {
   private Player playerInTurn = Player.FINDUS;
 
-    @Override
+
+  @Override
   public Player getPlayerInTurn() {
     return playerInTurn;
   } // Fake-it
@@ -70,7 +74,65 @@ public class StandardHotStoneGame implements Game {
 
   @Override
   public Card getCardInHand(Player who, int indexInHand) {
-    return null;
+
+
+      return new Card() {
+      @Override
+      public String getName() {
+        if (indexInHand == 0) {
+
+          String name = "Tres";
+          return name;
+
+        }
+
+        else if (indexInHand == 1) {
+
+          String name = "Dos";
+          return name;
+
+        }
+
+        else if (indexInHand == 2) {
+
+          String name = "Uno";
+          return name;
+
+        }
+
+          return "";
+      }
+
+      @Override
+      public int getManaCost() {
+        return 0;
+      }
+
+      @Override
+      public int getAttack() {
+        return 0;
+      }
+
+      @Override
+      public int getHealth() {
+        return 0;
+      }
+
+      @Override
+      public boolean isActive() {
+        return false;
+      }
+
+      @Override
+      public Player getOwner() {
+        return null;
+      }
+
+      @Override
+      public String getEffectDescription() {
+        return "";
+      }
+    };
   }
 
   @Override

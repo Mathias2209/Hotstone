@@ -66,7 +66,6 @@ public class TestAlphaStone {
     assertThat(player, is(Player.FINDUS));
   }
 
-
   // Example of a later, more complex, test case:
   // Card handling
 
@@ -118,6 +117,28 @@ public class TestAlphaStone {
         // Then it should be Findus
         assertThat(player, is(Player.FINDUS));
     }
+
+  @Test
+  public void whenGameStartsFindusShouldHaveThreeCards() {
+    // Given a new game, Findus' deck size should be3
+    int decksize = game.getHandSize(Player.FINDUS);
+    assertThat(decksize, is(3));
+  }
+
+  @Test
+  public void whenGameStartsFindusShouldHaveCardsInHand() {
+    // Given Findus' Card in position 0, 1 and 2
+    Card card0 = game.getCardInHand(Player.FINDUS, 0);
+    Card card1 = game.getCardInHand(Player.FINDUS, 1);
+    Card card2 = game.getCardInHand(Player.FINDUS, 2);
+
+    // Then the card should be Tres at 0, DOS at 1 and UNO at 2
+    assertThat(card0.getName(), is(GameConstants.TRES_CARD));
+    assertThat(card1.getName(), is(GameConstants.DOS_CARD));
+    assertThat(card2.getName(), is(GameConstants.UNO_CARD));
+  }
+
+
 
 
 
