@@ -105,6 +105,7 @@ public class StandardHotStoneGame implements Game {
         } else {
             playerInTurn = Player.FINDUS;
         }
+        // please
 
       //playerInTurn = Player.PEDDERSEN;
   }
