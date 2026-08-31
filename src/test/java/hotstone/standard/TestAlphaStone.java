@@ -64,13 +64,6 @@ public class TestAlphaStone {
     Player player = game.getPlayerInTurn();
     // Then it should be Findus
     assertThat(player, is(Player.FINDUS));
-
-    // Later on, the 'printGameState' can be very handy during development
-    // as you can inspect the state of the game (the Given in GWT) and
-    // ensure your assumptions are correct before modifying it (When)
-    // to test a new feature (Then)
-
-    // TestHelper.printGameState(game);
   }
 
 
