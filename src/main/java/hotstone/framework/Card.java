@@ -15,7 +15,7 @@
  */
 
 package hotstone.framework;
-// virker dette lort?!?!?!
+
 /** Role of a Card in HotStone. The present interface presents a
  * read-only view of the card to respect that a client may only alter
  * the internal state of a card through the Game's mutator methods.
