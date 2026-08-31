@@ -94,6 +94,32 @@ public class TestAlphaStone {
     // assertThat(card.getName(), is(GameConstants.TRES_CARD));
   }
 
+
+    @Test
+    public void whenFindusEndsItIsPeddersTurn() {
+        // Given findus ended turn
+        game.endTurn();
+
+        // When I ask for the player in turn
+        Player player = game.getPlayerInTurn();
+        // Then it should be Peddersen
+        assertThat(player, is(Player.PEDDERSEN));
+    }
+
+
+    @Test
+    public void whenPeddersenEndsItIsFindusTurn() {
+        // Given findus ended turn and then Peddersen ended turn
+        game.endTurn();
+        game.endTurn();
+
+        // When I ask for the player in turn
+        Player player = game.getPlayerInTurn();
+        // Then it should be Findus
+        assertThat(player, is(Player.FINDUS));
+    }
+
+
   /** REMOVE ME. Not a test of HotStone, just an example of the
    matchers that the hamcrest library has... */
   @Test
