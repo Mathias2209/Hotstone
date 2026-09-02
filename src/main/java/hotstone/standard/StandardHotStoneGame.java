@@ -18,7 +18,9 @@ package hotstone.standard;
 
 import hotstone.framework.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /** This is the 'temporary test stub' in TDD
@@ -45,7 +47,6 @@ import java.util.Map;
 
 public class StandardHotStoneGame implements Game {
   private Player playerInTurn = Player.FINDUS;
-
 
   @Override
   public Player getPlayerInTurn() {
@@ -74,65 +75,7 @@ public class StandardHotStoneGame implements Game {
 
   @Override
   public Card getCardInHand(Player who, int indexInHand) {
-
-
-      return new Card() {
-      @Override
-      public String getName() {
-        if (indexInHand == 0) {
-
-          String name = "Tres";
-          return name;
-
-        }
-
-        else if (indexInHand == 1) {
-
-          String name = "Dos";
-          return name;
-
-        }
-
-        else if (indexInHand == 2) {
-
-          String name = "Uno";
-          return name;
-
-        }
-
-          return "";
-      }
-
-      @Override
-      public int getManaCost() {
-        return 0;
-      }
-
-      @Override
-      public int getAttack() {
-        return 0;
-      }
-
-      @Override
-      public int getHealth() {
-        return 0;
-      }
-
-      @Override
-      public boolean isActive() {
-        return false;
-      }
-
-      @Override
-      public Player getOwner() {
-        return null;
-      }
-
-      @Override
-      public String getEffectDescription() {
-        return "";
-      }
-    };
+      return null;
   }
 
   @Override
