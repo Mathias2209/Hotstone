@@ -61,9 +61,10 @@ public class StandardHotStoneGame implements Game {
   private List<Card> handPeddersen = new ArrayList<>(List.of(TRES_Card, DOS_Card, UNO_Card));
   private List<Card> deckPeddersen = new ArrayList<>(List.of(CUATRO_Card, CINCO_Card, SEIS_Card, SIETE_Card));
 
+  Hero Baby = new StandardHero(GameConstants.BABY_HERO_TYPE, 3, "Just Cute", 21);
+
 
   private int turnnumber = 0;
-
 
   @Override
   public Player getPlayerInTurn() {
@@ -72,7 +73,7 @@ public class StandardHotStoneGame implements Game {
 
   @Override
   public Hero getHero(Player who) {
-    return null;
+    return Baby;
   }
 
   @Override

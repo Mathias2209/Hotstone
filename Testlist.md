@@ -32,6 +32,9 @@
 ### End of Game
 - [X] **When** game reaches round 8, **Then** Findus wins
 
+### Hero
+- [ ] **When** game starts **Then** Findus' hero Baby has 21 health
+
 
 
 ### Playing cards

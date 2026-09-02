@@ -30,6 +30,7 @@ package hotstone.standard;
  */
 
 import hotstone.framework.Card;
+import hotstone.framework.Hero;
 import hotstone.framework.Player;
 import hotstone.utility.TestHelper;
 import org.junit.jupiter.api.*;
@@ -273,4 +274,17 @@ public class TestAlphaStone {
     assertThat(game.getWinner(), is(Player.FINDUS));
 
     }
+
+    @Test
+    public void findusHeroStatsShouldBe21JustCuteMana3(){
+      Hero findusHero = game.getHero(Player.FINDUS);
+
+      assertThat(findusHero.getHealth(), is(21));
+      assertThat(findusHero.getEffectDescription(), is("Just Cute"));
+      assertThat(findusHero.getMana(), is(3));
+      assertThat(findusHero.getType(), is(GameConstants.BABY_HERO_TYPE));
+
+    }
+
+
 }
