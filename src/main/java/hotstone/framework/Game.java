@@ -91,6 +91,23 @@ public interface Game {
    * @param who the player owning the hand
    * @return an iterable over the cards in the hand
    */
+
+  Card getCardInDeck(Player who, int indexInHand);
+
+  /** Get an iterable over the cards in the deck. Convenience method
+   * to allow writing code ala
+   * 'for (Card c: game.getHand(Player.FINDUS)) { ... }'.
+   *
+   * Alternatively, if you want streaming:
+   * StreamSupport.stream(game.getHand(who).spliterator(), false).
+   *
+   *
+   * PRECONDITION: 'who' is never null.
+   *
+   * @param who the player owning the hand
+   * @return an iterable over the cards in the hand
+   */
+
   Iterable<? extends Card> getHand(Player who);
 
   /** Get the number of cards in the hand.

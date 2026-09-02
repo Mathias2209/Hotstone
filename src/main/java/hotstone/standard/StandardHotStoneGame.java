@@ -47,13 +47,22 @@ import java.util.Map;
 
 public class StandardHotStoneGame implements Game {
   private Player playerInTurn = Player.FINDUS;
-  Card UNO_Card = new StandardCard(GameConstants.UNO_CARD, 1, 1, 1, Player.FINDUS);
-  Card DOS_Card = new StandardCard(GameConstants.DOS_CARD, 2, 2, 2, Player.FINDUS);
-  Card TRES_Card = new StandardCard(GameConstants.TRES_CARD, 3, 3, 3, Player.FINDUS);
+  Card UNO_Card = new StandardCard(GameConstants.UNO_CARD, 1, 1, 1);
+  Card DOS_Card = new StandardCard(GameConstants.DOS_CARD, 2, 2, 2);
+  Card TRES_Card = new StandardCard(GameConstants.TRES_CARD, 3, 3, 3);
+  Card CUATRO_Card = new StandardCard(GameConstants.CUATRO_CARD, 2, 3, 1);
+  Card CINCO_Card = new StandardCard(GameConstants.CINCO_CARD, 3, 5, 1);
+  Card SEIS_Card = new StandardCard(GameConstants.SEIS_CARD, 2, 1, 3);
+  Card SIETE_Card = new StandardCard(GameConstants.SIETE_CARD, 3, 2, 4);
 
   private List<Card> handFindus = new ArrayList<>(List.of(TRES_Card, DOS_Card, UNO_Card));
+  private List<Card> deckFindus = new ArrayList<>(List.of(CUATRO_Card, CINCO_Card, SEIS_Card, SIETE_Card));
+
+  private List<Card> handPeddersen = new ArrayList<>(List.of(TRES_Card, DOS_Card, UNO_Card));
+  private List<Card> deckPeddersen = new ArrayList<>(List.of(CUATRO_Card, CINCO_Card, SEIS_Card, SIETE_Card));
 
 
+  private int turnnumber = 0;
 
 
   @Override
@@ -68,17 +77,25 @@ public class StandardHotStoneGame implements Game {
 
   @Override
   public Player getWinner() {
-    return null;
+    if (turnnumber == 8) {
+
+      return  Player.FINDUS;
+    }
+
+    else {
+
+      return  null;
+    }
   }
 
   @Override
   public int getTurnNumber() {
-    return 0;
+    return turnnumber;
   }
 
   @Override
   public int getDeckSize(Player who) {
-    return 0;
+    return 4;
   }
 
   @Override
@@ -91,10 +108,23 @@ public class StandardHotStoneGame implements Game {
 
      else {
 
-       // Return Peddersens hand
+       return handPeddersen.get(indexInHand);
 
      }
-      return null;
+  }
+  @Override
+  public Card getCardInDeck(Player who, int indexInDeck) {
+
+    if (who == Player.FINDUS) {
+
+      return deckFindus.get(indexInDeck);
+    }
+
+    else {
+
+      return deckPeddersen.get(indexInDeck);
+
+    }
   }
 
   @Override
@@ -129,8 +159,8 @@ public class StandardHotStoneGame implements Game {
         } else {
             playerInTurn = Player.FINDUS;
         }
-
-      //playerInTurn = Player.PEDDERSEN;
+    // Turn number increases by 1
+    turnnumber += 1;
   }
 
   @Override
