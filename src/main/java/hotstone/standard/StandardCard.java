@@ -4,24 +4,41 @@ import hotstone.framework.Card;
 import hotstone.framework.Player;
 
 public class StandardCard implements Card {
+
+    private final String name;
+    private final int manaCost;
+    private final int attack;
+    private int health;
+    private final Player owner;
+
+    public StandardCard(String name, int manaCost, int attack, int health, Player owner) {
+
+    this.name = name;
+    this.manaCost = manaCost;
+    this.attack = attack;
+    this.health = health;
+    this.owner = owner;
+
+    }
+
     @Override
     public String getName() {
-        return "";
+        return name;
     }
 
     @Override
     public int getManaCost() {
-        return 0;
+        return manaCost;
     }
 
     @Override
     public int getAttack() {
-        return 0;
+        return attack;
     }
 
     @Override
     public int getHealth() {
-        return 0;
+        return health;
     }
 
     @Override
@@ -31,7 +48,7 @@ public class StandardCard implements Card {
 
     @Override
     public Player getOwner() {
-        return null;
+        return owner;
     }
 
     @Override

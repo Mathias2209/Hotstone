@@ -47,11 +47,19 @@ import java.util.Map;
 
 public class StandardHotStoneGame implements Game {
   private Player playerInTurn = Player.FINDUS;
+  Card UNO_Card = new StandardCard(GameConstants.UNO_CARD, 1, 1, 1, Player.FINDUS);
+  Card DOS_Card = new StandardCard(GameConstants.DOS_CARD, 2, 2, 2, Player.FINDUS);
+  Card TRES_Card = new StandardCard(GameConstants.TRES_CARD, 3, 3, 3, Player.FINDUS);
+
+  private List<Card> handFindus = new ArrayList<>(List.of(TRES_Card, DOS_Card, UNO_Card));
+
+
+
 
   @Override
   public Player getPlayerInTurn() {
     return playerInTurn;
-  } // Fake-it
+  }
 
   @Override
   public Hero getHero(Player who) {
@@ -75,6 +83,17 @@ public class StandardHotStoneGame implements Game {
 
   @Override
   public Card getCardInHand(Player who, int indexInHand) {
+
+     if (who == Player.FINDUS) {
+
+       return handFindus.get(indexInHand);
+     }
+
+     else {
+
+       // Return Peddersens hand
+
+     }
       return null;
   }
 
@@ -110,7 +129,6 @@ public class StandardHotStoneGame implements Game {
         } else {
             playerInTurn = Player.FINDUS;
         }
-        // please
 
       //playerInTurn = Player.PEDDERSEN;
   }

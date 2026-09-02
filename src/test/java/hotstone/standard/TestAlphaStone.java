@@ -49,13 +49,11 @@ import hotstone.framework.Game;
  */
 public class TestAlphaStone {
   private Game game;
-  private Card card;
 
   /** Fixture for AlphaStone testing. */
   @BeforeEach
   public void setUp() {
     game = new StandardHotStoneGame();
-    card = new StandardCard();
   }
 
   // Example of an early, simple test case:
@@ -94,96 +92,45 @@ public class TestAlphaStone {
     assertThat(player, is(Player.PEDDERSEN));
   }
 
-  @Disabled
   @Test
-  public void shouldHaveUnoDosTresCardsInitially() {
-    // Given a game, Findus has 3 cards in hand
-    int count = game.getHandSize(Player.FINDUS);
-    assertThat(count, is(3));
-    // And these are ordered Tres, Dos, Uno in slot 0,1,2
+  public void whenPeddersenEndsItIsFindusTurn() {
+    // Given findus ended turn and then Peddersen ended turn
+    game.endTurn();
+    game.endTurn();
 
-    // When I pick card 0
-    Card card = game.getCardInHand(Player.FINDUS, 0);
-    // Then is it Tres
-    // ENABLE TO START TDD'ing
-    // assertThat(card.getName(), is(GameConstants.TRES_CARD));
+    // When I ask for the player in turn
+    Player player = game.getPlayerInTurn();
+    // Then it should be Findus
+    assertThat(player, is(Player.FINDUS));
   }
 
-
-    @Test
-    public void whenPeddersenEndsItIsFindusTurn() {
-        // Given findus ended turn and then Peddersen ended turn
-        game.endTurn();
-        game.endTurn();
-
-        // When I ask for the player in turn
-        Player player = game.getPlayerInTurn();
-        // Then it should be Findus
-        assertThat(player, is(Player.FINDUS));
-    }
-    @Disabled
   @Test
   public void whenGameStartsFindusShouldHaveThreeCards() {
     // Given a new game, Findus' deck size should be3
     int decksize = game.getHandSize(Player.FINDUS);
     assertThat(decksize, is(3));
   }
-  @Disabled
+
   @Test
-  public void whenGameStartsFindusShouldHaveCardsInHand() {
-    // Given Findus' Card in position 0, 1 and 2
-    Card card0 = game.getCardInHand(Player.FINDUS, 0);
-    //Card card1 = game.getCardInHand(Player.FINDUS, 1);
-    //Card card2 = game.getCardInHand(Player.FINDUS, 2);
+  public void shouldHaveUnoDosTresCardsInitially() {
+    // And these are ordered Tres, Dos, Uno in slot 0,1,2
 
-    // Then the card should be Tres at 0, DOS at 1 and UNO at 2
-    assertThat(card0.getName(), is(GameConstants.TRES_CARD));
-    //assertThat(card1.getName(), is(GameConstants.DOS_CARD));
-    //assertThat(card2.getName(), is(GameConstants.UNO_CARD));
-  }
-  @Disabled
-  @Test
-  public void cardDosShouldHaveAttr222() {
-
-    Card cardDos = game.getCardInHand(Player.FINDUS, 1);
-
-    // Then - it has mana=2, attack=2, health=2
-    assertThat(cardDos.getManaCost(), is(2));
-    assertThat(cardDos.getAttack(), is(2));
-    assertThat(cardDos.getHealth(), is(2));
-
-
+    // When I pick card 0
+    Card card = game.getCardInHand(Player.FINDUS, 0);
+    // Then is it Tres
+    assertThat(card.getName(), is(GameConstants.TRES_CARD));
   }
 
-  /** REMOVE ME. Not a test of HotStone, just an example of the
-   matchers that the hamcrest library has... */
   @Test
-  public void shouldDefinitelyBeRemoved() {
-    // Matching null and not null values
-    // 'is' require an exact match
-    // Hamcrest uses the 'equals()' method
-    String s = null;
-    assertThat(s, is(nullValue()));
-    s = "Ok";
-    assertThat(s, is(notNullValue()));
-    assertThat(s, is("Ok"));
-
-    // If you only validate substrings, use containsString
-    assertThat("This is a dummy test", containsString("dummy"));
-
-    // You can use is on any type
-    int answerToLifeUniverseAndEverything = 42;
-    assertThat(answerToLifeUniverseAndEverything, is(42));
-
-    // Match contents of Lists
-    List<String> l = new ArrayList<String>();
-    l.add("Bimse");
-    l.add("Bumse");
-    // Note - ordering is ignored when matching using hasItems
-    assertThat(l, hasItems(new String[] {"Bumse","Bimse"}));
-
-    // Matchers may be combined, like is-not
-    assertThat(l.get(0), is(not("Bumse")));
+  public void dosShouldHaveAttr222() {
+    // Given card Dos
+    Card card = game.getCardInHand(Player.FINDUS, 1);
+    // Then the attr should be (2, 2, 2)
+    assertThat(card.getHealth(), is(2));
+    assertThat(card.getAttack(), is(2));
+    assertThat(card.getManaCost(), is(2));
   }
+
+
 
 }
